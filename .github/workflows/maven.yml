@@ -1,0 +1,102 @@
+name: Units & Integrations
+
+on: 
+  push:
+  #schedule:
+    # - cron: '0 21 * * *'
+    branches:
+     - master
+     #- dev
+  #pull_request:
+    #branches:
+     #- master
+     #- dev
+
+jobs:
+  maven:
+    #name: Units & Integrations
+    runs-on: ubuntu-latest
+    #runs-on: ${{ matrix.os.name }}
+    #strategy:
+      #matrix:
+        # syntax inspired from https://github.community/t5/GitHub-Actions/Using-a-matrix-defined-input-for-a-custom-action/m-p/32032/highlight/true#M988
+        #os:
+          #- {name: macos-latest, short: "macos" }
+          #- {name: ubuntu-latest, short: "ubuntu" }
+          #- {name: windows-latest, short: "windows" }
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+         java-version: 1.8
+
+    - name: List env
+      run: env
+
+    - name: Cache maven build
+      uses: actions/cache@v1
+      with:
+         path: ~/.m2/repository
+         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+         restore-keys: |
+            ${{ runner.os }}-maven-
+
+    - name: Maven Compile
+      run: mvn compile
+
+    - name: Maven Testing
+      run: mvn test
+       # - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-k8s-example
+     
+    - name: Package
+       #run: mvn clean package -Dmaven.test.skip=true -s ./settings.xml  # 使用aliyun maven源
+      run: mvn -B clean package -DskipTests
+
+    - name: Verify
+      run: mvn -B clean verify -Pintegration-test
+       #mvn clean verify -P sonar -Dsonar.login=XXXX
+
+    - name: Creating Artifact
+      run: mkdir staging && cp target/*.jar staging
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+          name: springboot-devops-demo-jar-staging-${{github.sha}}
+          #name: springboot-devops-demo-jar-${{matrix.os.short}}-${{github.sha}}
+          path: staging
+
+    - name: Create gitstats
+      run: sudo apt-get install gitstats  gnuplot  -y &&  gitstats . ./gitstats-springboot-devops-demo
+
+    - name: Upload gitstats
+      uses: actions/upload-artifact@v1
+      with: 
+          name: gitstats-springboot-devops-demo-${{github.sha}}
+          path: ./gitstats-springboot-devops-demo
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag hbstarjason/springboot-devops-demo:$(date +%s)
+
+
+     #- name: Show Error Logs
+       #if: failure()
+       #run: |
+          #cat hs_err_pid*
+          #rm hs_err_pid*
+
+
+# mvn dependency:tree   ---查看当前项目的依赖树
+
+# mvn [clean] compile   ---编译项目中的代码
+# mvn [clean] test   ---执行项目的测试
+# mvn [clean] install/package   ---打包一个项目生成jar文件，只包含编译后的java二进制文件
+# mvn [clean] verify
+# mvn [clean] site   ---生成文档和报告、站点
+
+
+  

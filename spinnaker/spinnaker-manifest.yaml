@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: trigger-demo-github
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+  name: springboot-devops-demo
+  namespace: trigger-demo-github
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springboot-devops-demo
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: springboot-devops-demo
+        tier: backend
+    spec:
+      containers:
+        - image: 'hbstarjason/springboot-devops-demo:latest'
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+          name: springboot-devops-demo
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+  name: springboot-devops-demo
+  namespace: trigger-demo-github
+spec:
+  ports:
+    - name: k8s-backend
+      port: 8080
+  selector:
+    app: springboot-devops-demo
+    tier: backend
