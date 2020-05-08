@@ -30,7 +30,7 @@ script:
   - cd springboot-devops-demo
   - mvn test
   #- ./mvnw clean install -B
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-cicd-demo
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-devops-demo
   #- mvn clean package -Dmaven.test.skip=true
  
 
