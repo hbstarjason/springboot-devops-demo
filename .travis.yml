@@ -26,8 +26,8 @@ addons:
 
 # 执行脚本
 script: 
-  - git clone https://github.com/hbstarjason/springboot-cicd-demo
-  - cd springboot-cicd-demo
+  - git clone https://github.com/hbstarjason/springboot-devops-demo
+  - cd springboot-devops-demo
   - mvn test
   #- ./mvnw clean install -B
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hbstarjason_springboot-cicd-demo
