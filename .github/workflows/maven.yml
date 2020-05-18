@@ -79,11 +79,17 @@ jobs:
           name: gitstats-springboot-devops-demo-${{github.sha}}
           path: ./gitstats-springboot-devops-demo
 
-    - name: Lint Dockerfile
-      run: docker run --rm -i hadolint/hadolint < Dockerfile
+    #- name: Lint Dockerfile
+    #  run: docker run --rm -i hadolint/hadolint < Dockerfile
       # https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices
       # https://github.com/hadolint/hadolint/blob/master/README.md
-      
+      # https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#continuous-integration
+
+    - name: Lint Dockerfile
+      uses: brpaz/hadolint-action@master
+      with:
+        dockerfile: "Dockerfile" 
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hbstarjason/springboot-devops-demo:$(date +%s)
 
