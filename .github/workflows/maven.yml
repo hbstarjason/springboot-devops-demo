@@ -85,10 +85,10 @@ jobs:
       # https://github.com/hadolint/hadolint/blob/master/README.md
       # https://github.com/hadolint/hadolint/blob/master/docs/INTEGRATION.md#continuous-integration
 
-    - name: Lint Dockerfile
-      uses: brpaz/hadolint-action@master
-      with:
-        dockerfile: "Dockerfile" 
+    #- name: Lint Dockerfile
+    #  uses: brpaz/hadolint-action@master
+    #  with:
+    #    dockerfile: "Dockerfile" 
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hbstarjason/springboot-devops-demo:$(date +%s)
