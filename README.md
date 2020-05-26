@@ -10,18 +10,18 @@
 | 3    |                              /                               | JIRA                                |                                           |
 | 4    |                              /                               | Confluence                          |                                           |
 | 5    |                              /                               | Ansible、Terraform                  | Infrastructure as Code                    |
-| 6    | Azure Kubernetes Service、<br/>Amazon Elastic Kubernetes Service | Kubeadm                             | kubernetes                                |
+| 6    | Azure AKS、Amazon EKS                                        | Kubeadm、Kops、Openshift3.X         | kubernetes                                |
 | 7    |                            Github                            | Gitlab、Gogs                        | Git                                       |
 | 8    |        Github Actions、<br/>Travis-CI、<br/>CircleCI         | Gitlab-CI、Jenkins                  | Continuous Integration                    |
 | 9    |                              /                               | Maven、Gradle                       |                                           |
-| 10   |                              /                               | Nexus3、Artifactory                 |                                           |
+| 10   |                              /                               | Nexus3、JFrog Artifactory           |                                           |
 | 11   |                          Dockerhub                           | Harbor                              |                                           |
 | 12   |                          SonarCloud                          | SonarQube                           |                                           |
 | 13   |                              /                               | ArgoCD、FluxCD                      | GitOps、Continuous Delivery               |
 | 14   |                              /                               | Jmeter                              |                                           |
 | 15   |                              /                               | Selenium                            |                                           |
-| 16   |                              /                               | ArgoRollouts、Spinnaker             | Continuous Deployment                     |
-| 17   |                                                              | Istio                               | Service Mesh                              |
+| 16   |                              /                               | ArgoRollouts、Spinnaker             | Progressive Delivery、Continuous Deployment|
+| 17   |                              /                               | Istio                               | Service Mesh                              |
 | 18   |                              /                               | EFK（Elasticsearch+Fluentd+Kibana） | Logging                                   |
 | 19   |                              /                               | Prometheus && Alertmanager          | Monitoring && Alerting                    |
 | 20   |                              /                               | Skywalking                          | APM（Application Performance Management） |
