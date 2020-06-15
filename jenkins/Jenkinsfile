@@ -19,14 +19,14 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
             containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
             //containerTemplate(name: 'kubectl', image: 'cnych/kubectl', command: 'cat', ttyEnabled: true),
             //containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.10.2', command: 'cat', ttyEnabled: true),
-            containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.14.0', command: 'cat', ttyEnabled: true),
-            containerTemplate(name: 'helm', image: 'cnych/helm', command: 'cat', ttyEnabled: true)
+            //containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.14.0', command: 'cat', ttyEnabled: true),
+            //containerTemplate(name: 'helm', image: 'cnych/helm', command: 'cat', ttyEnabled: true)
             ],
             volumes: [
                     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
                     //hostPathVolume(mountPath: '/root/.gradle', hostPath: '/home/gradle/.gradle'),
-                    hostPathVolume(hostPath: '/root/.kube', mountPath: '/root/.kube'),
-                    hostPathVolume(hostPath: '/root/.m2', mountPath: '/root/.m2')
+                    //hostPathVolume(hostPath: '/root/.kube', mountPath: '/root/.kube'),
+                    //hostPathVolume(hostPath: '/root/.m2', mountPath: '/root/.m2')
             ],
             annotations: [
                     podAnnotation(key: "sidecar.istio.io/inject", value: "false")
@@ -100,30 +100,30 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
         }
 
 
-        container('kubectl') {
-            stage('k8s deploy') {
-                sh "sed -i \"s/hbstarjason\\/springboot-devops-demo/${params.REGISTRY_URL}\\/${params.DOCKER_USER}\\/springboot-devops-demo:${shortGitCommit}/g\" springboot-devops-demo.yaml"
+        //container('kubectl') {
+            //stage('k8s deploy') {
+                //sh "sed -i \"s/hbstarjason\\/springboot-devops-demo/${params.REGISTRY_URL}\\/${params.DOCKER_USER}\\/springboot-devops-demo:${shortGitCommit}/g\" springboot-devops-demo.yaml"
                 //sh "kubectl --kubeconfig=/root/.kube/config apply -f springboot-devops-demo.yaml"
                 //sh "kubectl  create -f jenkins/admin-rbac.yaml"
                 //sh "kubectl get ns |grep -w springboot-devops-demo || kubectl  create ns springboot-devops-demo"
                 //sh "kubectl  apply -f springboot-devops-demo.yaml -n springboot-devops-demo"
                 //kubectl get svc springboot-devops-demo -n springboot-devops-demo -o yaml |sed 's/ClusterIP/LoadBalancer/' |kubectl replace -f -
-            }
-        }
+            //}
+       // }
         
 
-        container('helm') {
-            stage('helm deploy') {
-                sh "helm version"
+        //container('helm') {
+            //stage('helm deploy') {
+                //sh "helm version"
                 //sh "sed -i \"s/lusyoe\\/springboot-devops-demo/${params.REGISTRY_URL}\\/lusyoe\\/springboot-devops-demo:${shortGitCommit}/g\" charts/values.yaml"
                 //sh "helm upgrade --install springboot-devops-demo charts/"
-            }
-        }
-        container('jnlp') {    
-            stage("Archive") {
-                archiveArtifacts artifacts: 'build/archive/*.*', fingerprint: true, allowEmptyArchive: true
-                 }
-             }
+            //}
+        //}
+        //container('jnlp') {    
+            //stage("Archive") {
+                //archiveArtifacts artifacts: 'build/archive/*.*', fingerprint: true, allowEmptyArchive: true
+                 //}
+             //}
             
 //            catch(Exception e) {
 //        currentBuild.result = "FAILURE"
