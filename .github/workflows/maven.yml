@@ -100,8 +100,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: hbstarjason/springboot-devops-demo
-        tags: $(date +%s)
-        #tags: latest
+        tags: latest
 
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.0.4
