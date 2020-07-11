@@ -1,4 +1,4 @@
-name: Units & Integrations
+name: Units & Integrations & Release
 
 on: 
   push:
@@ -94,6 +94,12 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hbstarjason/springboot-devops-demo:$(date +%s)
 
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.0.4
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "springboot-devops-demo"
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
 
      #- name: Show Error Logs
        #if: failure()
