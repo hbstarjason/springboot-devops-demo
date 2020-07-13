@@ -36,7 +36,7 @@
 
 2. 安装好Kubernets集群，需要创建一个sa（[admin-rbac.yaml](https://github.com/hbstarjason/springboot-devops-demo/blob/master/jenkins/admin-rbac.yaml)）
 
-3. 在Jenkins里新建Pipeline Job，填写上git地址：https://github.com/hbstarjason/springboot-devops-demo，“脚本地址”填写：jenkins/Jenkinsfile，保存执行Job，第一次Pipeline可能会报错，没关系，然后再次执行，填写上镜像仓库的地址。
+3. 在Jenkins里新建Pipeline Job，填写上git地址：[springboot-devops-demo](https://github.com/hbstarjason/springboot-devops-demo)，“脚本地址”填写：jenkins/Jenkinsfile，保存执行Job，第一次Pipeline可能会报错，没关系，然后再次执行，填写上镜像仓库的地址。
 
 4. 等待脚本自动运行完成CI部分。脚本会执行如下步骤：
 
