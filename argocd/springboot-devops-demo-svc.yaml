@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-devops-demo
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+spec:
+  selector:
+    app: springboot-devops-demo
+    tier: backend
+  ports:
+  - port: 8080
+    name: k8s-backend
+  #type: LoadBalancer
+  type: NodePort  
