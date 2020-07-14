@@ -3,29 +3,29 @@
 基于Kubernetes的Spring Boot DevOps项目实战
 
 ## 涉及相关技术栈
-|      |                    Public                     | Private                             | Note                                        |
-| ---- | :-------------------------------------------: | ----------------------------------- | ------------------------------------------- |
-| 1    |                       /                       | VS code                             |                                             |
-| 2    |                       /                       | Docker                              |                                             |
-| 3    |                       /                       | JIRA                                |                                             |
-| 4    |                       /                       | Confluence                          |                                             |
-| 5    |                       /                       | Ansible、Terraform                  | Infrastructure as Code                      |
-| 6    |             Azure AKS、Amazon EKS             | Kubeadm、Kops、Openshift3.X         | kubernetes                                  |
-| 7    |                    Github                     | Gitlab、Gogs                        | Git                                         |
-| 8    | Github Actions、<br/>Travis-CI、<br/>CircleCI | Gitlab-CI、Jenkins                  | Continuous Integration                      |
-| 9    |                       /                       | Maven、Gradle                       |                                             |
-| 10   |                       /                       | Nexus3、JFrog Artifactory           |                                             |
-| 11   |                   Dockerhub                   | Harbor                              |                                             |
-| 12   |                  SonarCloud                   | SonarQube                           |                                             |
-| 13   |                       /                       | ArgoCD、FluxCD                      | GitOps、Continuous Delivery                 |
-| 14   |                       /                       | Jmeter                              |                                             |
-| 15   |                       /                       | Selenium                            |                                             |
-| 16   |                       /                       | ArgoRollouts、Spinnaker             | Progressive Delivery、Continuous Deployment |
-| 17   |                       /                       | Istio                               | Service Mesh                                |
-| 18   |                       /                       | EFK（Elasticsearch+Fluentd+Kibana） | Logging                                     |
-| 19   |                       /                       | Prometheus && Alertmanager          | Monitoring && Alerting                      |
-| 20   |                       /                       | Skywalking                          | APM（Application Performance Management）   |
-| 21   |                       /                       | Sentry                              |                                             |
+|      |                        Public                         | Private                             | Note                                        |
+| ---- | :---------------------------------------------------: | ----------------------------------- | ------------------------------------------- |
+| 1    |                           /                           | VS code                             |                                             |
+| 2    |                           /                           | Docker                              |                                             |
+| 3    |                           /                           | JIRA                                |                                             |
+| 4    |                           /                           | Confluence                          |                                             |
+| 5    |                           /                           | Ansible、Terraform                  | Infrastructure as Code                      |
+| 6    |                 Azure AKS、Amazon EKS                 | Kubeadm、Kops、Openshift3.X         | kubernetes                                  |
+| 7    |                      **Github**                       | Gitlab、Gogs                        | Git                                         |
+| 8    | **Github Actions**、<br/>**Travis-CI**、<br/>CircleCI | Gitlab-CI、**Jenkins**              | Continuous Integration                      |
+| 9    |                           /                           | **Maven**、Gradle                   |                                             |
+| 10   |                           /                           | Nexus3、JFrog Artifactory           |                                             |
+| 11   |                     **Dockerhub**                     | **Harbor**                          |                                             |
+| 12   |                    **SonarCloud**                     | SonarQube                           |                                             |
+| 13   |                           /                           | **ArgoCD**、FluxCD                  | GitOps、Continuous Delivery                 |
+| 14   |                           /                           | Jmeter                              |                                             |
+| 15   |                           /                           | Selenium                            |                                             |
+| 16   |                           /                           | **ArgoRollouts**、**Spinnaker**     | Progressive Delivery、Continuous Deployment |
+| 17   |                           /                           | Istio                               | Service Mesh                                |
+| 18   |                           /                           | EFK（Elasticsearch+Fluentd+Kibana） | Logging                                     |
+| 19   |                           /                           | **Prometheus && Alertmanager**      | Monitoring && Alerting                      |
+| 20   |                           /                           | **Skywalking**                      | APM（Application Performance Management）   |
+| 21   |                           /                           | Sentry                              |                                             |
 
 ## DevOps ToolChain
 （图）
@@ -71,6 +71,7 @@
 
 ## History
 
+- 2020-7-15，增加使用Argo CD部分。
 - 2020-7-14，完善ReadMe，增加User Guide。
 - 2020-7-11，增加利用Github Actions 自动发布到Heroku，访问地址：https://springboot-devops-demo.herokuapp.com/
 - missing……
