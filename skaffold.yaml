@@ -1,0 +1,10 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+build:
+  artifacts:
+  - image: hbstarjason/springboot-devops-demo
+deploy:
+  kubectl:
+    manifests:
+      - springboot-devops-demo.yaml
+
