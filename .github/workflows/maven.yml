@@ -72,7 +72,7 @@ jobs:
           path: staging
 
     - name: Create gitstats
-      run: sudo apt-get install gitstats  gnuplot  -y &&  gitstats . ./gitstats-springboot-devops-demo
+      run: sudo apt-get update && sudo apt-get install gitstats  gnuplot  -y &&  gitstats . ./gitstats-springboot-devops-demo
 
     - name: Upload gitstats
       uses: actions/upload-artifact@v1
@@ -123,6 +123,3 @@ jobs:
 # mvn [clean] install/package   ---打包一个项目生成jar文件，只包含编译后的java二进制文件
 # mvn [clean] verify
 # mvn [clean] site   ---生成文档和报告、站点
-
-
-  
