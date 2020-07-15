@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: springboot-devops-demo-loacl
+spec:
+  containers:
+  - name: springboot-devops-demo-loacl
+    image: hbstarjason/springboot-devops-demo

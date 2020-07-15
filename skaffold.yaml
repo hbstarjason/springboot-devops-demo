@@ -6,5 +6,5 @@ build:
 deploy:
   kubectl:
     manifests:
-      - springboot-devops-demo.yaml
+      - local-skaffold.yaml
 
