@@ -69,7 +69,9 @@
    - APM（Application Performance Management），Skywalking
    - Sentry
 
-### 本地开发环境食用方法：
+### 本地环境食用方法：
+
+- 使用Skaffold。
 
 ```bash
 # 安装kubernetes集群（此处省略）
@@ -86,10 +88,31 @@ $ skaffold dev
 # 直接能看到运行结果
 ```
 
+- 直接使用kubectl。
 
+  ```bash
+  $ git clone https://github.com/hbstarjason/springboot-devops-demo && \
+    cd springboot-devops-demo
+  $ kuebctl create ns springboot-devops-demo
+  $ kubectl apply -f springboot-devops-demo.yaml -n springboot-devops-demo  
+  ```
+
+- 使用Helm
+
+  ```bash
+  $ git clone https://github.com/hbstarjason/springboot-devops-demo && \
+    cd springboot-devops-demo
+  $ kubectl create ns springboot-devops-demo
+  $ helm version
+  version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
+  $ helm install springboot-devops-demo  ./charts/ -f ./charts/values.yaml --namespace springboot-devops-demo
+  ```
+
+  
 
 ## History
 
+- 2020-7-20，完善ReadMe，增加使用Helm在本地环境直接运行结果。
 - 2020-7-15，增加本地开发环境食用方法，采用Skaffold。
 - 2020-7-15，增加使用Argo CD部分。
 - 2020-7-14，完善ReadMe，增加User Guide。
