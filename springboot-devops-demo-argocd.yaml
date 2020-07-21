@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: springboot-devops-demo
+  namespace: springboot-devops-demo
+spec:
+  project: default
+  source: 
+    repoURL: https://github.com/hbstarjason/springboot-devops-demo.git
+    targetRevision: master
+    path: argocd
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: springboot-devops-demo
+  syncPolicy:
+    automated:
+      prune: true 
