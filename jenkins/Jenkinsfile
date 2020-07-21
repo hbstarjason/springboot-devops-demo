@@ -76,7 +76,7 @@ podTemplate(label: label, cloud: 'kubernetes', serviceAccount: 'admin', containe
 
             stage('docker-login') {
                 //REGISTRY_URL私有仓库地址，也可使用官方地址：docker.io
-                sh "docker login -u ${params.DOCKER_USER} --password-stdin ${params.DOCKER_PASSWORD} ${params.REGISTRY_URL} "
+                sh "echo "${params.DOCKER_PASSWORD}" | docker login -u ${params.DOCKER_USER} --password-stdin  ${params.REGISTRY_URL} "
             //withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) 
               //{
                 //sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
