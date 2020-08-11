@@ -5,7 +5,7 @@ set -e
 
 CURRENT_DIR="$(cd "$(dirname $0)"; pwd)"
 
-CHART_PATH="$CURRENT_DIR/../../chart"
+CHART_PATH="$CURRENT_DIR/../chart"
 
 NAMESPACE="springboot-devops-demo"
 
