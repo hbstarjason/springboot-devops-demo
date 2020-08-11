@@ -27,7 +27,7 @@ function create_namespace() {
 helm repo add stable http://mirror.azure.cn/kubernetes/charts
 helm repo up
 
-helm lint ./charts
+# helm lint ./charts
 
 sudo sysctl -w vm.max_map_count=262144
 sudo sysctl -w vm.drop_caches=1
