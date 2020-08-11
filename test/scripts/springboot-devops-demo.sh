@@ -9,9 +9,7 @@ CHART_PATH="$CURRENT_DIR/../chart"
 
 NAMESPACE="springboot-devops-demo"
 
-
-cd ${CHART_PATH}
-
+# cd ${CHART_PATH}
 
 function create_namespace() {
   NAMESPACE=$1
@@ -39,4 +37,5 @@ echo "springboot-devops-demo Deploy"
 
 helm install springboot-devops-demo  ./charts/ -f ./charts/values.yaml -n $NAMESPACE
 
+kubectl get pod -n $NAMESPACE
 echo "springboot-devops-demo deployed successfully"
