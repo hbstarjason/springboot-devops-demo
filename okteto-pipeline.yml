@@ -1,3 +1,4 @@
 deploy:
+  - mvn -B clean package -DskipTests
   - okteto build -t hbstarjason/springboot-devops-demo
   - kubectl apply -f springboot-devops-demo.yaml
