@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-devops-demo
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springboot-devops-demo
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: springboot-devops-demo
+        tier: backend
+    spec:
+      containers:
+      - name: springboot-devops-demo
+        image: hbstarjason/springboot-devops-demo
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 15
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-devops-demo
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+spec:
+  selector:
+    app: springboot-devops-demo
+    tier: backend
+  ports:
+  - port: 8080
+    name: k8s-backend
+
+
+
+
