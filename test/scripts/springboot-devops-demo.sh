@@ -27,4 +27,6 @@ helm install springboot-devops-demo  ./charts/ -f ./charts/values.yaml -n $NAMES
 
 helm list -n $NAMESPACE
 kubectl get pod -n $NAMESPACE
+sleep 60
+kubectl get pod -n $NAMESPACE
 echo "springboot-devops-demo deployed successfully"
