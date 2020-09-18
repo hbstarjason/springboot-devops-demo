@@ -1,5 +1,5 @@
-#FROM openjdk:8
-FROM openjdk:8-jre-alpine
+FROM openjdk:8
+#FROM openjdk:8-jre-alpine
 
 ENV JAVA_OPTS=-javaagent:/usr/skywalking/agent/skywalking-agent.jar
 
