@@ -108,10 +108,11 @@ $ skaffold dev
   $ helm install springboot-devops-demo  ./charts/ -f ./charts/values.yaml --namespace springboot-devops-demo
   ```
 
-  
+- 一键部署至云端：猛击[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/hbstarjason/springboot-devops-demo)，访问地址：https://springboot-devops-demo-hbstarjason.cloud.okteto.net/
 
 ## History
 
+- 2020-9-18，增加一键部署至云端（okteto.com），访问地址：https://springboot-devops-demo-hbstarjason.cloud.okteto.net/
 - 2020-8-12，增加利用Github Actions自动安装Minikube，并采用Helm部署至Minikube进行验证测试。
 - 2020-7-20，完善ReadMe，增加使用Helm在本地环境直接运行。
 - 2020-7-15，增加本地开发环境食用方法，采用Skaffold。
