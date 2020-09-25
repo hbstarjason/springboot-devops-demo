@@ -112,6 +112,7 @@ $ skaffold dev
 
 ## History
 
+- 2020-9-25，增加以Sidecar模式进行部署。
 - 2020-9-18，增加一键部署至云端（okteto.com），访问地址：https://springboot-devops-demo-hbstarjason.cloud.okteto.net/
 - 2020-8-12，增加利用Github Actions自动安装Minikube，并采用Helm部署至Minikube进行验证测试。
 - 2020-7-20，完善ReadMe，增加使用Helm在本地环境直接运行。
