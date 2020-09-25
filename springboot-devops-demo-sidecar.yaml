@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #namespace: springboot-devops-demo
+  name: springboot-devops-demo
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springboot-devops-demo
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: springboot-devops-demo
+        tier: backend
+    spec:
+      # refs: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-initialization/
+      initContainers:
+        - name: sidecar-jar
+          image: hbstarjason/springboot-devops-demo:jar
+          imagePullPolicy: IfNotPresent
+          #command: ["cp", "-r", "/project/target/", "/opt"]
+          command: ["cp", "/project/target/k8s.jar", "/opt"] 
+          volumeMounts:
+            - name: sidecar
+              mountPath: /opt
+      containers:
+        - name: runtime
+          image: openjdk:8
+          resources:
+            requests:
+              memory: "200Mi"
+              cpu: "200m"
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
+          ports:
+            - containerPort: 8080
+          command: ["bash", "-c", "java  -jar /opt/k8s.jar -Djava.security.egd=file:/dev/./urandom"]  
+          #command: ["bash", "-c", "java ${JAVA_OPTS} -jar /opt/app.jar -Djava.security.egd=file:/dev/./urandom"]
+          #env:
+          #  - name: JAVA_OPTS
+          #    value: "-javaagent:/sidecar/sidecar/skywalking/agent/skywalking-agent.jar"
+          volumeMounts:
+            - name: sidecar
+              mountPath: /opt
+      volumes:
+        - name: sidecar
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-devops-demo
+  labels:
+    app: springboot-devops-demo
+    tier: backend
+spec:
+  selector:
+    app: springboot-devops-demo
+    tier: backend
+  ports:
+  - port: 8080
+    name: k8s-backend
+  #type: LoadBalancer
+  type: NodePort    
