@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kaniko
+spec:
+  template:
+    spec:
+      containers:
+      - name: kaniko
+        #image: gcr.io/kaniko-project/executor:latest
+        image: hbstarjason/executor:v0.24.0
+        args: ["--dockerfile=kaniko/Dockerfile-package",
+               "--context=git://github.com/hbstarjason/springboot-devops-demo.git#refs/heads/master",
+               "--destination=hbstarjason/springboot-devops-demo:jar"]
+        volumeMounts:
+        - name: kaniko-secret
+          mountPath: "/kaniko/.docker"
+      restartPolicy: Never
+      volumes:
+      - name: kaniko-secret
+        secret:
+          secretName: hbstarjason
+          items:
+          - key: .dockerconfigjson
+            path: config.json
