@@ -1,0 +1,42 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+    # url: http://mirror.azure.cn/kubernetes/charts
+  - name: fluxcd
+    url: https://charts.fluxcd.io
+
+releases:
+  # https://github.com/fluxcd/flux/blob/master/chart/flux/README.md
+  - name: flux
+    chart: fluxcd/flux
+    values:
+      - git:
+          url: git@github.com:hbstarjason/springboot-devops-demo/
+          path: flux
+          pollInterval: 1m
+        registry:
+          includeImage: hbstarjason/springboot-devops-demo
+          automationInterval: 1m
+
+  # https://github.com/helm/charts/tree/master/stable/nginx-ingress
+  - name: nginx-ingress
+    chart: stable/nginx-ingress
+    values:
+      - controller:
+          replicaCount: 1
+          resources:
+            limits:
+              memory: 64Mi
+            requests:
+              memory: 64Mi
+          service:
+            type: NodePort
+            nodePorts:
+              http: 30080
+        defaultBackend:
+          replicaCount: 1
+          resources:
+            limits:
+              memory: 16Mi
+            requests:
+              memory: 16Mi

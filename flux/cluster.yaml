@@ -1,0 +1,10 @@
+# https://kind.sigs.k8s.io/docs/user/quick-start/
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30080
+        hostPort: 30080
+        protocol: TCP
