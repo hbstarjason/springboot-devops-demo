@@ -18,7 +18,7 @@ check:
 cluster:
 	kind create cluster --name $(CLUSTER_NAME) --config cluster.yaml
 	helmfile sync
-	kubectl apply -f flux/springboot-devops-demo.yaml
+	kubectl apply -f springboot-devops-demo.yaml
 	kubectl  rollout status deployment springboot-devops-demo
 
 .PHONY: logs-flux
