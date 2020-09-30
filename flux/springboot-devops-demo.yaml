@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: springboot-devops-demo
-        image: hbstarjason/springboot-devops-demo:2-2f19df572a0
+        image: hbstarjason/springboot-devops-demo
         resources:
           requests:
             cpu: 100m
