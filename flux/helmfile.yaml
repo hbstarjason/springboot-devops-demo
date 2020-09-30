@@ -11,7 +11,7 @@ releases:
     chart: fluxcd/flux
     values:
       - git:
-          url: git@github.com:hbstarjason/springboot-devops-demo/
+          url: git@github.com:hbstarjason/springboot-devops-demo.git
           path: flux
           pollInterval: 1m
         registry:
