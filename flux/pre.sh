@@ -11,7 +11,7 @@ curl -sSL "https://storage.googleapis.com/kubernetes-release/release/${KUBECTLVE
 chmod +x /tmp/kubectl && \
 sudo mv /tmp/kubectl /usr/local/bin/kubectl
 
-curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/${}/kind-linux-amd64 && \
+curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/${KINDVERSION}/kind-linux-amd64 && \
   chmod +x ./kind && \
   mv ./kind /usr/local/bin/kind
   
