@@ -11,7 +11,8 @@ NAMESPACE="springboot-devops-demo"
 
 # cd ${CHART_PATH}
 
-helm repo add stable http://mirror.azure.cn/kubernetes/charts
+#helm repo add stable http://mirror.azure.cn/kubernetes/charts
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo up
 
 # helm lint ./charts
