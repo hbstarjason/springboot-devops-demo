@@ -112,15 +112,17 @@ $ skaffold dev
 
 ## History
 
-- 2020-9-25，增加以Sidecar模式进行部署。
-- 2020-9-18，增加一键部署至云端（okteto.com），访问地址：https://springboot-devops-demo-hbstarjason.cloud.okteto.net/
-- 2020-8-12，增加利用Github Actions自动安装Minikube，并采用Helm部署至Minikube进行验证测试。
-- 2020-7-20，完善ReadMe，增加使用Helm在本地环境直接运行。
-- 2020-7-15，增加本地开发环境食用方法，采用Skaffold。
-- 2020-7-15，增加使用ArgoCD部分。
-- 2020-7-14，完善ReadMe，增加User Guide。
-- 2020-7-11，增加利用Github Actions 自动发布到Heroku，访问地址：https://springboot-devops-demo.herokuapp.com/
-- 2020-5-8，增加Travis-CI部分，集成SonarCloud。
+- 2020-12-23，增加多阶段构建。
+- 2020-10-01，增加Flux部分。
+- 2020-09-25，增加以Sidecar模式进行部署。
+- 2020-09-18，增加一键部署至云端（okteto.com），访问地址：https://springboot-devops-demo-hbstarjason.cloud.okteto.net/
+- 2020-08-12，增加利用Github Actions自动安装Minikube，并采用Helm部署至Minikube进行验证测试。
+- 2020-07-20，完善ReadMe，增加使用Helm在本地环境直接运行。
+- 2020-07-15，增加本地开发环境食用方法，采用Skaffold。
+- 2020-07-15，增加使用ArgoCD部分。
+- 2020-07-14，完善ReadMe，增加User Guide。
+- 2020-07-11，增加利用Github Actions 自动发布到Heroku，访问地址：https://springboot-devops-demo.herokuapp.com/
+- 2020-05-08，增加Travis-CI部分，集成SonarCloud。
 - Missing……
 
 ## Reference 
