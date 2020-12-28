@@ -36,53 +36,10 @@ $ ./argocd-linux-amd64 app list
 
 - 使用CRD自动部署
 
-  ```bash
-  $ cat >> springboot-devops-demo-argocd.yaml << EOF
-  apiVersion: argoproj.io/v1alpha1
-  kind: Application
-  metadata:
-    name: springboot-devops-demo
-    namespace: springboot-devops-demo
-  spec:
-    project: default
-    source: 
-      repoURL: https://github.com/hbstarjason/springboot-devops-demo.git
-      targetRevision: master
-      path: argocd
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: springboot-devops-demo
-    syncPolicy:
-      automated:
-        prune: true 
-  EOF
-  
+  ```bash  
   $ kubectl create ns springboot-devops-demo
   $ kubectl apply -f  springboot-devops-demo-argocd.yaml
-  
-  
-  
-  nginx-demo
-  
-  cat >> nginx-demo.yaml << EOF
-  apiVersion: argoproj.io/v1alpha1
-  kind: Application
-  metadata:
-    name: nginx-demo
-    namespace: nginx-demo
-  spec:
-    project: default
-    source: 
-      repoURL: https://github.com/hbstarjason/Continuous-Deploy.git
-      targetRevision: master
-      path: argocd
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: nginx-demo
-    syncPolicy:
-      automated:
-        prune: true 
-  EOF
+ 
   ```
 
   
