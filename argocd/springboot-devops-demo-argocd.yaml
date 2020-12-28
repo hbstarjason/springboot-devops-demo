@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: springboot-devops-demo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hbstarjason/springboot-devops-demo.git # what github repo to watch
+    targetRevision: HEAD
+    path: argocd # path to your deployment files
+    directory:
+      recurse: true # go through all the folders inside the path
+  destination:
+    server: https://kubernetes.default.svc # local cluster where argo is deployed
+    namespace: springboot-devops-demo # which namespace to deploy to
+  syncPolicy:
+    automated: # roll out automatically when making changes
+      prune: false
+      selfHeal: false
