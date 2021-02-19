@@ -101,7 +101,15 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: hbstarjason/springboot-devops-demo
         tags: latest
-
+    
+    - name: Trivy Image
+      run : |
+          # wget https://github.com/aquasecurity/trivy/releases/download/v0.16.0/trivy_0.16.0_Linux-64bit.tar.gz
+          # tar zxvf trivy_0.16.0_Linux-64bit.tar.gz
+          # ./trivy hbstarjason/springboot-devops-demo
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+              -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy hbstarjason/springboot-devops-demo 
+    
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.0.4
       with:
