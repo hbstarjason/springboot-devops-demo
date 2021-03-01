@@ -37,6 +37,11 @@ jobs:
 
     - name: List env
       run: env
+    
+    - name: time
+      run: |
+       time=$(curl -s "http://quan.suning.com/getSysTime.do")
+       echo -e "当前时间：$(echo "${time}" | awk -F '":"|","' '{print $2}')"
 
     - name: Cache maven build
       uses: actions/cache@v1
